@@ -2,8 +2,13 @@ import os
 import puzzle_ia as ia
 
 
+if os.name == 'nt':
+    clear_screen = 'cls'
+else:
+    clear_screen = 'clear'
+
 #Limpa o terminal
-os.system('cls' if os.name == 'nt' else 'clear')
+os.system(clear_screen)
 
 
 #Instruções
@@ -42,14 +47,14 @@ print(f"\nCusto da solução: a solução encontrada exige {solucao.custo_caminh
 
 
 input('\n\nPressione ENTER para ver o passo a passo\n')
-os.system('cls' if os.name == 'nt' else 'clear')
+os.system(clear_screen)
 
 cont = 1
 for estado in solucao.caminho:
     print(f'\nEstado {cont}')
     ia.imprime_estado(estado)
     input('\n\nPressione ENTER para avançar\n')
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system(clear_screen)
 
     cont += 1
 
@@ -57,4 +62,4 @@ print('\nFIM!')
 ia.imprime_estado(estado)
 
 input('\n\nPressione ENTER para sair\n')
-os.system('cls' if os.name == 'nt' else 'clear')
+os.system(clear_screen)
