@@ -15,7 +15,7 @@ def swap(list, pos1, pos2):
 
 
 def expande(no, custo_busca):
-    pos_vazio = no.estado.index('X')
+    pos_vazio = no.estado.index(' ')
 
     CIMA = -3
     BAIXO = 3
@@ -31,6 +31,19 @@ def expande(no, custo_busca):
     if (pos_vazio + CIMA >= 0):
         novo_estado = copy(no.estado)
         swap(novo_estado, pos_vazio, pos_vazio + CIMA)
+
+        novo_caminho = copy(no.caminho)
+        novo_caminho.append(novo_estado)
+        
+        custo_busca += 1
+        novo_no = No(novo_estado, no.custo_caminho + 1, custo_busca, novo_caminho)
+
+        nos_expandidos.append(novo_no)
+
+    #se for possível mover para a direita
+    if ((pos_vazio + DIREITA) % largura != 0):
+        novo_estado = copy(no.estado)
+        swap(novo_estado, pos_vazio, pos_vazio + DIREITA)
 
         novo_caminho = copy(no.caminho)
         novo_caminho.append(novo_estado)
@@ -65,19 +78,6 @@ def expande(no, custo_busca):
         novo_no = No(novo_estado, no.custo_caminho + 1, custo_busca, novo_caminho)
 
         nos_expandidos.append(novo_no)
-        
-    #se for possível mover para a direita
-    if ((pos_vazio + DIREITA) % largura != 0):
-        novo_estado = copy(no.estado)
-        swap(novo_estado, pos_vazio, pos_vazio + DIREITA)
-
-        novo_caminho = copy(no.caminho)
-        novo_caminho.append(novo_estado)
-        
-        custo_busca += 1
-        novo_no = No(novo_estado, no.custo_caminho + 1, custo_busca, novo_caminho)
-
-        nos_expandidos.append(novo_no)
 
     return nos_expandidos
 
@@ -98,17 +98,17 @@ def busca_em_largura(estado_inicial, estado_final):
         no_atual = fila.get()
 
         nos_expandidos = expande(no_atual, custo_busca)
-        print(nos_expandidos)
 
         for no_expandido in nos_expandidos:
             custo_busca += 1
 
-            print("Expansão:")
-            print(f"Custo da busca: {no_expandido.custo_busca}")
-            print(f"Custo da solução: {no_expandido.custo_caminho}")
-            print(f"Caminho: {no_expandido.caminho}")
+            #print("Expansão:")
+            #print(f"Custo da busca: {no_expandido.custo_busca}")
+            #print(f"Custo da solução: {no_expandido.custo_caminho}")
+            #print(f"Caminho: {no_expandido.caminho}")
 
             if no_expandido.estado == estado_final:
+                no_expandido.custo_busca = custo_busca
                 return no_expandido
 
             if ' '.join(no_expandido.estado) not in estados_percorridos:
@@ -116,6 +116,21 @@ def busca_em_largura(estado_inicial, estado_final):
                 estados_percorridos.add(' '.join(no_expandido.estado))
 
     return None
+
+def imprime_estado(estado):
+    print('-------------------------')
+    print('|       |       |       |')
+    print(f'|   {estado[0]}   |   {estado[1]}   |   {estado[2]}   |')
+    print('|       |       |       |')
+    print('-------------------------')
+    print('|       |       |       |')
+    print(f'|   {estado[3]}   |   {estado[4]}   |   {estado[5]}   |')
+    print('|       |       |       |')
+    print('-------------------------')
+    print('|       |       |       |')
+    print(f'|   {estado[6]}   |   {estado[7]}   |   {estado[8]}   |')
+    print('|       |       |       |')
+    print('-------------------------')
 
 
 #LIXÃO:
