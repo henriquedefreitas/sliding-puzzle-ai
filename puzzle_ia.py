@@ -83,7 +83,7 @@ def expande(no):
     return nos_expandidos
 
 
-def busca_em_comprimento(estado_inicial, estado_final):
+def busca_em_largura(estado_inicial, estado_final):
     no_inicial = No(estado_inicial, 0, 1, [estado_inicial])
 
     if (no_inicial.estado == estado_final):
