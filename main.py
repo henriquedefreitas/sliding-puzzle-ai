@@ -105,7 +105,7 @@ os.system(clear_screen)
 print("\n-----------------SOLUÇÃO--------------------")
 
 if solucao == None:
-    print('\nNão foi encontrada uma solução para essa configuração!\n\n Verifique os valores de entrada e tente novamente.')
+    print('\nNão foi encontrada uma solução para essa configuração!\n\nVerifique os valores de entrada e tente novamente.')
 else:
     print(f"\nCusto da busca: foram percorridos {solucao.custo_busca} estado(s)")
     print(f"\nCusto da solução: a solução encontrada exige {solucao.custo_caminho} movimento(s)")
