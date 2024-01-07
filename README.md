@@ -1,16 +1,11 @@
 # Sliding Puzzle AI
-### Pré-requisitos
-Python (foi utilizado Python 3.10.1)
-### Como executar
-Primeiramente clone o repositório dentro do diretório desejado com o seguinte comando:
+### Prerequisites
+Python 3.10
+### How to run
+On your terminal, clone the project and run the solver with
 
-```
-git clone git@github.com:henriquedefreitas/sliding-puzzle-ia.git
-```
-
-Em seguida, acesse o diretório e execute o programa com o seguinte comando:
 ```
 python main.py
 ```
 
-Após isso, basta seguir as intruções contidas no programa para utilizá-lo!
+After that, follow the instructions to solve a game
